@@ -1,0 +1,27 @@
+
+.title {
+    background: blueviolet;
+    color: white;
+    font-size: 14px
+}
+
+.row {
+    height: 90vh;
+}
+
+.center-v {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.w-90 {
+    width: 90% !important;
+}
+
+.center {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

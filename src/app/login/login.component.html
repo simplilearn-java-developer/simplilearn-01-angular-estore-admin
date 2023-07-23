@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-sm title center-v">
+        <div class="pl-4">
+            <div>
+                <h1>E-COMMERCE STORE</h1>
+                <h3>Admin Dashboard</h3>
+              </div>
+              <br><br>
+              <div>
+                <h6>Manage Dynamic Content for Your WebSite</h6>
+                <h6>An Optimal, Reliable and Dynamic Web Backend</h6>
+                <h6>Modern Secure Interface based on Google Cloud</h6>
+              </div>
+        </div>
+    </div>
+    <div class="col-sm bg-light center">
+        <div class="border border-secondary px-5 py-4 w-90">
+            <div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="password">
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary w-100" (click)="onValidate()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

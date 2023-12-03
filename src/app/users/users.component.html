@@ -15,12 +15,12 @@
         <tbody>
           <tr *ngFor="let user of users; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ user.name }}</td>
-            <td>{{ user.username }}</td>
+            <td>{{ user.fullName }}</td>
+            <td>{{ user.userId }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.city }}</td>
             <td>{{ user.contact }}</td>
-            <td><button type="button" class="btn btn-danger btn-sm">View Orders</button></td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="onShowOrders(user.userId)">View Orders</button></td>
           </tr>
         </tbody>
       </table>

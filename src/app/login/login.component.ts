@@ -3,6 +3,8 @@ import { AdminAuthService } from '../core/admin-auth.service';
 
 import { Credential } from '../model/credential.model';
 import { AdminResponse } from '../model/admin-response.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent {
   @Output()
   userAuthenticated = new EventEmitter<boolean>();
 
-  constructor(private adminAuthService: AdminAuthService){
+  constructor(private adminAuthService: AdminAuthService,
+              private toastr: ToastrService){
 
   }
 
@@ -49,15 +52,18 @@ export class LoginComponent {
 
           if (response.code === 101){
            
+            this.toastr.success('Login Successful!', 'eCommerce Store');
             localStorage.setItem("authCode",response.code.toString());
             this.userAuthenticated.emit(true);
           }
           else{
+            this.toastr.warning('Invalid Credentials!', 'eCommerce Store');
             localStorage.setItem("authCode","");
           }
         },
         error: (err: any) => {
-           console.error(err)
+          this.toastr.error('Error while Login!', 'eCommerce Store');
+          console.error(err)
         } 
       });
   }

@@ -1,4 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AdminAuthService } from '../core/admin-auth.service';
+
+import { Credential } from '../model/credential.model';
+import { AdminResponse } from '../model/admin-response.model';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,7 @@ export class LoginComponent {
   @Output()
   userAuthenticated = new EventEmitter<boolean>();
 
-  constructor(){
+  constructor(private adminAuthService: AdminAuthService){
 
   }
 
@@ -25,7 +29,37 @@ export class LoginComponent {
 
       2. Call the backend to validate email and password using an Angular Service.
     */
-    this.userAuthenticated.emit(true);
+
+    const credential: Credential = {
+        email: this.email,
+        password: this.password
+    }
+
+    this.adminLogin(credential);
+ 
+  }
+
+  private adminLogin(credential: Credential): void{
+
+    this.adminAuthService.adminLogin(credential)
+      .subscribe({
+        next:(response: AdminResponse) => {
+          
+          console.log(response);
+
+          if (response.code === 101){
+           
+            localStorage.setItem("authCode",response.code.toString());
+            this.userAuthenticated.emit(true);
+          }
+          else{
+            localStorage.setItem("authCode","");
+          }
+        },
+        error: (err: any) => {
+           console.error(err)
+        } 
+      });
   }
 
 }

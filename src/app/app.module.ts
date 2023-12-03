@@ -12,6 +12,8 @@ import { ProductsComponent } from './products/products.component';
 import { ShipmentsComponent } from './shipments/shipments.component';
 import { PaymentsComponent } from './payments/payments.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { PaymentsComponent } from './payments/payments.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
